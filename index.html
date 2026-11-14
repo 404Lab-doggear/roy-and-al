@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ロイとアル ～シュナウザー・ブラザーズ～</title>
+<title>ロイとアルの歌</title>
 <meta name="description" content="ロイとアルの歌のプレゼント">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,103 +13,108 @@
   :root{
     --bg:#f6f1e9; --card:#fffdf9; --ink:#2b2a28; --sub:#6f6a62; --line:#e4dccf;
     --roy:#5b6670; --al:#8a7a66; --accent:#e0703a; --accent-ink:#fff;
+    --rock:#2f6fb0; --rock-ink:#fff;
   }
   @media (prefers-color-scheme: dark){
     :root{ --bg:#1c1b19; --card:#262522; --ink:#f2ede6; --sub:#b3ab9f; --line:#3a3833;
-      --roy:#9fb0bd; --al:#cdb79a; --accent:#ef8a55; --accent-ink:#1c1b19; }
+      --roy:#9fb0bd; --al:#cdb79a; --accent:#ef8a55; --accent-ink:#1c1b19;
+      --rock:#6ea8e6; --rock-ink:#1c1b19; }
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.7}
   .wrap{max-width:640px;margin:0 auto;padding:40px 16px 56px}
-  .wrap > .note{margin-top:8px}
   .gift{display:inline-block;font-size:13px;letter-spacing:.2em;color:var(--accent);font-weight:700;margin-bottom:8px}
-  h1{font-size:clamp(26px,7vw,40px);line-height:1.25;margin:0 0 6px;font-weight:900}
-  h1 small{display:block;font-size:.5em;font-weight:700;color:var(--sub);margin-top:6px;letter-spacing:.05em}
-  .lead{color:var(--sub);margin:12px 0 28px}
+  h1{font-size:clamp(28px,8vw,42px);line-height:1.25;margin:0 0 6px;font-weight:900}
+  .lead{color:var(--sub);margin:12px 0 24px}
+
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;
+    position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}
+  .tab{appearance:none;border:2px solid var(--line);background:var(--card);color:var(--ink);
+    font:inherit;font-weight:700;padding:10px 8px;border-radius:14px;cursor:pointer;line-height:1.3}
+  .tab small{display:block;font-size:11px;font-weight:500;color:var(--sub)}
+  .tab[aria-selected="true"]{border-color:var(--g);background:var(--g);color:var(--g-ink)}
+  .tab[aria-selected="true"] small{color:inherit;opacity:.85}
+  .g-hiphop{--g:var(--accent);--g-ink:var(--accent-ink)}
+  .g-rock{--g:var(--rock);--g-ink:var(--rock-ink)}
+
+  .genre{margin-bottom:8px}
+  .genre[hidden]{display:none}
+  .genre-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+  .badge{font-size:12px;font-weight:700;letter-spacing:.12em;padding:3px 10px;border-radius:999px;
+    background:var(--g);color:var(--g-ink)}
+  .genre-head h2{margin:0;font-size:20px}
+
   .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
-  .player{text-align:center}
-  .disc{width:132px;height:132px;margin:4px auto 16px;border-radius:50%;
-    background:radial-gradient(circle,var(--card) 0 14%,var(--ink) 15% 17%,#3b3a37 18% 100%);
-    display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+  .card + .card{margin-top:12px}
+  .mini{font-size:15px;margin:0 0 12px}
+  .video,.player{text-align:center}
+  .video .mini,.player .mini{text-align:left}
+  video{display:block;width:100%;max-width:340px;max-height:72vh;aspect-ratio:824/1464;
+    margin:0 auto 16px;border-radius:14px;background:#000;object-fit:contain}
+  .disc{width:120px;height:120px;margin:4px auto 16px;border-radius:50%;
+    background:radial-gradient(circle,var(--g) 0 13%,var(--ink) 14% 16%,#3b3a37 17% 100%);
+    box-shadow:0 6px 18px rgba(0,0,0,.15)}
   .playing .disc{animation:spin 6s linear infinite}
   @keyframes spin{to{transform:rotate(360deg)}}
   @media (prefers-reduced-motion: reduce){.playing .disc{animation:none}}
   audio{width:100%;margin:4px 0 16px}
   .dl{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
-    background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;
+    background:var(--g);color:var(--g-ink);text-decoration:none;font-weight:700;
     font-size:17px;padding:14px 18px;border-radius:999px}
   .dl:active{transform:translateY(1px)}
   .note{font-size:12.5px;color:var(--sub);margin:10px 0 0}
-  h2{font-size:18px;margin:36px 0 12px}
+
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";color:var(--g)}
+  details[open] summary::after{content:"－"}
+  .lyrics{white-space:pre-wrap;font-size:14.5px;margin-top:14px;line-height:1.9}
+  .lyrics b{display:block;color:var(--g);font-size:12px;letter-spacing:.1em;margin-top:14px}
+
+  .section-title{font-size:18px;margin:36px 0 12px}
   .dogs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .dogs .card + .card{margin-top:0}
   @media (max-width:420px){.dogs{grid-template-columns:1fr}}
   .dog h3{margin:0 0 8px;font-size:22px}
   .dog.roy h3{color:var(--roy)} .dog.al h3{color:var(--al)}
   .dog ul{margin:0;padding-left:1.1em;font-size:14px}
   .dog li{margin:2px 0}
-  details{margin-top:12px}
-  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"＋";color:var(--accent)}
-  details[open] summary::after{content:"－"}
-  .lyrics{white-space:pre-wrap;font-size:14.5px;margin-top:14px;line-height:1.9}
-  .lyrics b{display:block;color:var(--accent);font-size:12px;letter-spacing:.1em;margin-top:14px}
-  .mini{font-size:15px;margin:0 0 12px;text-align:left}
-  .video{text-align:center}
-  .video video{display:block;width:100%;max-width:340px;max-height:72vh;aspect-ratio:824/1464;
-    margin:0 auto 16px;border-radius:14px;background:#000;object-fit:contain}
   footer{text-align:center;color:var(--sub);font-size:12px;margin-top:40px}
 </style>
 </head>
 <body>
 <main class="wrap">
-  <div class="gift">♪ A SONG FOR YOU</div>
-  <h1>ロイとアル<small>～シュナウザー・ブラザーズ～</small></h1>
-  <p class="lead">おしゃべりなロイと、「うんうん」のアル。<br>2匹の毎日を歌にしました。</p>
+  <div class="gift">♪ SONGS FOR YOU</div>
+  <h1>ロイとアルの歌</h1>
+  <p class="lead">おしゃべりなロイと、「うんうん」のアル。<br>2匹の毎日を、2つのジャンルで歌にしました。</p>
 
-  <section class="card video">
-    <h2 class="mini">🎬 動画</h2>
-    <video controls playsinline preload="metadata" poster="poster.jpg" src="roy-and-al.mp4"></video>
-    <a class="dl" href="roy-and-al.mp4" download="ロイとアル ～シュナウザー・ブラザーズ～.mp4">⬇ 動画をダウンロード（MP4）</a>
-  </section>
-
-  <section class="card player" id="player" style="margin-top:12px">
-    <h2 class="mini">🎵 曲だけ</h2>
-    <div class="disc" aria-hidden="true"></div>
-    <audio id="audio" controls preload="metadata" src="roy-and-al.mp3"></audio>
-    <a class="dl" href="roy-and-al.mp3" download="ロイとアル ～シュナウザー・ブラザーズ～.mp3">⬇ 曲をダウンロード（MP3）</a>
-    <p class="note">iPhoneでは「ファイル」アプリの「ダウンロード」フォルダに保存されます。</p>
-  </section>
-
-  <h2>登場するふたり</h2>
-  <div class="dogs">
-    <div class="card dog roy">
-      <h3>ロイ</h3>
-      <ul>
-        <li>おっとり優しい、几帳面</li>
-        <li>前足で手招き、よくしゃべる</li>
-        <li>モデルウォークとななおポーズ</li>
-        <li>カメラ目線は外さない</li>
-        <li>一番じゃないとイヤ</li>
-      </ul>
-    </div>
-    <div class="card dog al">
-      <h3>アル</h3>
-      <ul>
-        <li>究極の甘えん坊</li>
-        <li>スイッチが入ると走り回る</li>
-        <li>早食い王、ムキムキ、ジャンプ力</li>
-        <li>しゃべらないけど「うんうん」</li>
-        <li>座ったまま寝る、イビキがすごい</li>
-      </ul>
-    </div>
+  <div class="tabs" role="tablist" aria-label="ジャンル">
+    <button class="tab g-hiphop" role="tab" id="tab-hiphop" aria-controls="hiphop" aria-selected="true">HIPHOP<small>シュナウザー・ブラザーズ</small></button>
+    <button class="tab g-rock" role="tab" id="tab-rock" aria-controls="rock" aria-selected="false">ROCK'N'ROLL<small>シュナウザーズ・パレード</small></button>
   </div>
 
-  <section class="card" style="margin-top:12px">
-    <details>
-      <summary>歌詞を見る</summary>
-      <div class="lyrics"><b>INTRO</b>(ピューッ!) Yo, ロイ&amp;アル in the house
+  <!-- HIPHOP -->
+  <section class="genre g-hiphop" id="hiphop" role="tabpanel" aria-labelledby="tab-hiphop">
+    <div class="genre-head"><span class="badge">HIPHOP</span><h2>ロイとアル ～シュナウザー・ブラザーズ～</h2></div>
+
+    <div class="card video">
+      <h3 class="mini">🎬 動画</h3>
+      <video controls playsinline preload="metadata" poster="poster.jpg" src="roy-and-al.mp4"></video>
+      <a class="dl" href="roy-and-al.mp4" download="ロイとアル ～シュナウザー・ブラザーズ～.mp4">⬇ 動画をダウンロード（MP4）</a>
+    </div>
+
+    <div class="card player">
+      <h3 class="mini">🎵 曲だけ</h3>
+      <div class="disc" aria-hidden="true"></div>
+      <audio controls preload="metadata" src="roy-and-al.mp3"></audio>
+      <a class="dl" href="roy-and-al.mp3" download="ロイとアル ～シュナウザー・ブラザーズ～.mp3">⬇ 曲をダウンロード（MP3）</a>
+    </div>
+
+    <div class="card">
+      <details>
+        <summary>歌詞を見る</summary>
+        <div class="lyrics"><b>INTRO</b>(ピューッ!) Yo, ロイ&amp;アル in the house
 シュナウザー・ブラザーズ, let's go!
 <b>VERSE 1</b>ヒゲは整えて 毎日ルーティン
 順番どおりが 俺のルール
@@ -150,16 +155,128 @@
 ヒゲをゆらして Bounce, bounce, bounce!
 <b>OUTRO</b>ロイ!(ねえねえ!) アル!(うんうん!)
 (グォー…)</div>
-    </details>
+      </details>
+    </div>
   </section>
+
+  <!-- ROCK'N'ROLL -->
+  <section class="genre g-rock" id="rock" role="tabpanel" aria-labelledby="tab-rock">
+    <div class="genre-head"><span class="badge">ROCK'N'ROLL</span><h2>ロイとアル ～シュナウザーズ・パレード～</h2></div>
+
+    <div class="card video">
+      <h3 class="mini">🎬 動画</h3>
+      <video controls playsinline preload="metadata" poster="parade-poster.jpg" src="parade.mp4"></video>
+      <a class="dl" href="parade.mp4" download="ロイとアル ～シュナウザーズ・パレード～.mp4">⬇ 動画をダウンロード（MP4）</a>
+    </div>
+
+    <div class="card player">
+      <h3 class="mini">🎵 曲だけ</h3>
+      <div class="disc" aria-hidden="true"></div>
+      <audio controls preload="metadata" src="parade.mp3"></audio>
+      <a class="dl" href="parade.mp3" download="ロイとアル ～シュナウザーズ・パレード～.mp3">⬇ 曲をダウンロード（MP3）</a>
+    </div>
+
+    <div class="card">
+      <details>
+        <summary>歌詞を見る</summary>
+        <div class="lyrics"><b>INTRO</b>(ピューッ!)
+ロイとアル!
+<b>VERSE 1</b>まずはロイ きっちり屋さん
+ごはん お散歩 順番どおり
+前足クイクイ 手招きして
+「ねえねえ聞いて!」今日もおしゃべり
+<b>PRE-CHORUS</b>カメラ向けたら ロイは目線そらさない
+はい ななおポーズ キメ顔で
+<b>CHORUS</b>ロイとアル シュナウザーズ
+おヒゲそろえて 今日もゆく
+ワンツー モデルウォーク (ロイ!)
+うんうん ついてく (アル!)
+二匹そろえば 毎日パレード
+<b>VERSE 2</b>お次はアル スイッチオン
+部屋中ダッシュ ジャンプでピョーン
+トイレの前まで ストーカー
+どこへ行っても すぐ後ろ
+<b>PRE-CHORUS</b>ごはんの音で アルは秒で完食
+早食い王 もうおかわりの目
+<b>CHORUS</b>ロイとアル シュナウザーズ
+おヒゲそろえて 今日もゆく
+ワンツー モデルウォーク (ロイ!)
+うんうん ついてく (アル!)
+二匹そろえば 毎日パレード
+<b>BRIDGE</b>ロイは歯がキラッ 誰にでもニコッ
+でも曲がったことは 大キライ
+めったに怒らない… けど
+(ガルルッ!) …みんな正座
+
+アルは筋肉 ムキムキなのに
+掃除機の音で 逃げ出した
+まつ毛は長くて 寒がりさん
+毛布の中で ぶるぶるぶる
+<b>BREAK</b>夜になったら アルは座ったまま
+こっくりこっくり グォーグォーグォー
+ロイは「一番はボクでしょ?」って
+口笛ピューッで 飛んでくる
+<b>FINAL CHORUS</b>ロイとアル シュナウザーズ
+おヒゲそろえて 明日もゆく
+しゃべるロイに (ねえねえ!)
+うなずくアル (うんうん!)
+二匹そろえば 毎日パレード
+二匹そろえば 毎日パレード
+<b>OUTRO</b>ロイ「ねえねえ!」 アル「うんうん」
+おやすみ シュナウザーズ
+(グォー…)</div>
+      </details>
+    </div>
+  </section>
+
+  <p class="note">iPhoneでは「ファイル」アプリの「ダウンロード」フォルダに保存されます。</p>
+
+  <h2 class="section-title">登場するふたり</h2>
+  <div class="dogs">
+    <div class="card dog roy">
+      <h3>ロイ</h3>
+      <ul>
+        <li>おっとり優しい、几帳面</li>
+        <li>前足で手招き、よくしゃべる</li>
+        <li>モデルウォークとななおポーズ</li>
+        <li>カメラ目線は外さない</li>
+        <li>一番じゃないとイヤ</li>
+      </ul>
+    </div>
+    <div class="card dog al">
+      <h3>アル</h3>
+      <ul>
+        <li>究極の甘えん坊</li>
+        <li>スイッチが入ると走り回る</li>
+        <li>早食い王、ムキムキ、ジャンプ力</li>
+        <li>しゃべらないけど「うんうん」</li>
+        <li>座ったまま寝る、イビキがすごい</li>
+      </ul>
+    </div>
+  </div>
 
   <footer>Made with ♪ for Roy &amp; Al</footer>
 </main>
 <script>
-  const a=document.getElementById('audio'), p=document.getElementById('player');
-  a.addEventListener('play',()=>p.classList.add('playing'));
-  a.addEventListener('pause',()=>p.classList.remove('playing'));
-  a.addEventListener('ended',()=>p.classList.remove('playing'));
+  // ジャンル切り替え(JSが動かないときは両方表示のまま)
+  const tabs=[...document.querySelectorAll('.tab')];
+  const panels=[...document.querySelectorAll('.genre')];
+  const media=[...document.querySelectorAll('audio,video')];
+  function show(id){
+    tabs.forEach(t=>t.setAttribute('aria-selected', t.getAttribute('aria-controls')===id));
+    panels.forEach(p=>p.hidden = p.id!==id);
+    media.forEach(m=>{ if(!m.closest('#'+id)) m.pause(); });
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+  }
+  tabs.forEach(t=>t.addEventListener('click',()=>show(t.getAttribute('aria-controls'))));
+  show(location.hash==='#rock' ? 'rock' : 'hiphop');
+  // ひとつ再生したら他は止める+レコードを回す
+  media.forEach(m=>{
+    const card=m.closest('.player');
+    m.addEventListener('play',()=>{ media.forEach(o=>{ if(o!==m) o.pause(); }); card&&card.classList.add('playing'); });
+    m.addEventListener('pause',()=>card&&card.classList.remove('playing'));
+    m.addEventListener('ended',()=>card&&card.classList.remove('playing'));
+  });
 </script>
 </body>
 </html>
