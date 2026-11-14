@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ロイとアル ～シュナウザー・ブラザーズ～</title>
+<meta name="description" content="ロイとアルの歌のプレゼント">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f1e9; --card:#fffdf9; --ink:#2b2a28; --sub:#6f6a62; --line:#e4dccf;
+    --roy:#5b6670; --al:#8a7a66; --accent:#e0703a; --accent-ink:#fff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#1c1b19; --card:#262522; --ink:#f2ede6; --sub:#b3ab9f; --line:#3a3833;
+      --roy:#9fb0bd; --al:#cdb79a; --accent:#ef8a55; --accent-ink:#1c1b19; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;line-height:1.7}
+  .wrap{max-width:640px;margin:0 auto;padding:40px 16px 56px}
+  .gift{display:inline-block;font-size:13px;letter-spacing:.2em;color:var(--accent);font-weight:700;margin-bottom:8px}
+  h1{font-size:clamp(26px,7vw,40px);line-height:1.25;margin:0 0 6px;font-weight:900}
+  h1 small{display:block;font-size:.5em;font-weight:700;color:var(--sub);margin-top:6px;letter-spacing:.05em}
+  .lead{color:var(--sub);margin:12px 0 28px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px}
+  .player{text-align:center}
+  .disc{width:132px;height:132px;margin:4px auto 16px;border-radius:50%;
+    background:radial-gradient(circle,var(--card) 0 14%,var(--ink) 15% 17%,#3b3a37 18% 100%);
+    display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+  .playing .disc{animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion: reduce){.playing .disc{animation:none}}
+  audio{width:100%;margin:4px 0 16px}
+  .dl{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+    background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:700;
+    font-size:17px;padding:14px 18px;border-radius:999px}
+  .dl:active{transform:translateY(1px)}
+  .note{font-size:12.5px;color:var(--sub);margin:10px 0 0}
+  h2{font-size:18px;margin:36px 0 12px}
+  .dogs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:420px){.dogs{grid-template-columns:1fr}}
+  .dog h3{margin:0 0 8px;font-size:22px}
+  .dog.roy h3{color:var(--roy)} .dog.al h3{color:var(--al)}
+  .dog ul{margin:0;padding-left:1.1em;font-size:14px}
+  .dog li{margin:2px 0}
+  details{margin-top:12px}
+  summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋";color:var(--accent)}
+  details[open] summary::after{content:"－"}
+  .lyrics{white-space:pre-wrap;font-size:14.5px;margin-top:14px;line-height:1.9}
+  .lyrics b{display:block;color:var(--accent);font-size:12px;letter-spacing:.1em;margin-top:14px}
+  footer{text-align:center;color:var(--sub);font-size:12px;margin-top:40px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="gift">♪ A SONG FOR YOU</div>
+  <h1>ロイとアル<small>～シュナウザー・ブラザーズ～</small></h1>
+  <p class="lead">おしゃべりなロイと、「うんうん」のアル。<br>2匹の毎日を歌にしました。</p>
+
+  <section class="card player" id="player">
+    <div class="disc" aria-hidden="true"></div>
+    <audio id="audio" controls preload="metadata" src="roy-and-al.mp3"></audio>
+    <a class="dl" href="roy-and-al.mp3" download="ロイとアル ～シュナウザー・ブラザーズ～.mp3">⬇ 曲をダウンロード（MP3）</a>
+    <p class="note">iPhoneで保存できないときは、再生ボタンの横の「…」から「ダウンロード」を選んでください。</p>
+  </section>
+
+  <h2>登場するふたり</h2>
+  <div class="dogs">
+    <div class="card dog roy">
+      <h3>ロイ</h3>
+      <ul>
+        <li>おっとり優しい、几帳面</li>
+        <li>前足で手招き、よくしゃべる</li>
+        <li>モデルウォークと菜々緒ポーズ</li>
+        <li>カメラ目線は外さない</li>
+        <li>一番じゃないとイヤ</li>
+      </ul>
+    </div>
+    <div class="card dog al">
+      <h3>アル</h3>
+      <ul>
+        <li>究極の甘えん坊</li>
+        <li>スイッチが入ると走り回る</li>
+        <li>早食い王、ムキムキ、ジャンプ力</li>
+        <li>しゃべらないけど「うんうん」</li>
+        <li>座ったまま寝る、イビキがすごい</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="card" style="margin-top:12px">
+    <details>
+      <summary>歌詞を見る</summary>
+      <div class="lyrics"><b>INTRO</b>(ピューッ!) Yo, ロイ&amp;アル in the house
+シュナウザー・ブラザーズ, let's go!
+<b>VERSE 1</b>ヒゲは整えて 毎日ルーティン
+順番どおりが 俺のルール
+前足クイクイ 手招きポーズ
+しゃべり出したら 止まらないトーク
+カメラ向けたら 目線は外さねぇ
+菜々緒ポーズで 決める主役
+白い歯キラリ 誰でもフレンド
+でも一番は俺 そこは譲らねぇ
+<b>HOOK</b>ロイ&amp;アル (Yeah!) シュナウザー・ブラザーズ
+しゃべるロイ (ねえねえ!) うなずくアル (うんうん!)
+ちがう二匹で 最強のコンビ
+ヒゲをゆらして Bounce, bounce, bounce!
+<b>VERSE 2</b>スイッチ入れば 止まらないダッシュ
+ムキムキボディで 誰より速い
+ジャンプ一発 空まで届く
+ごはん出たら 秒で完食 早食いキング
+甘えん坊で どこでもついてく
+ストーカー級の 愛情パワー
+しゃべらないけど 返事は「うんうん」
+空気を読むのも 得意なアル
+<b>HOOK</b>ロイ&amp;アル (Yeah!) シュナウザー・ブラザーズ
+しゃべるロイ (ねえねえ!) うなずくアル (うんうん!)
+ちがう二匹で 最強のコンビ
+ヒゲをゆらして Bounce, bounce, bounce!
+<b>BRIDGE</b>ロイは優しい おっとりボーイ
+曲がったことは 大キライ
+めったに怒らない…けど キレたら Danger (ガルルッ!)
+アルはまつ毛長い ムキムキなのに
+実はビビりで 寒がりさん
+<b>VERSE 3</b>口笛ピューッで ロイがカムバック
+座ったままで アルはスリープ
+イビキ (グォー) がビートになって
+今夜も二匹で Good night
+<b>HOOK</b>ロイ&amp;アル (Yeah!) シュナウザー・ブラザーズ
+しゃべるロイ (ねえねえ!) うなずくアル (うんうん!)
+ちがう二匹で 最強のコンビ
+ヒゲをゆらして Bounce, bounce, bounce!
+<b>OUTRO</b>ロイ!(ねえねえ!) アル!(うんうん!)
+(グォー…)</div>
+    </details>
+  </section>
+
+  <footer>Made with ♪ for Roy &amp; Al</footer>
+</main>
+<script>
+  const a=document.getElementById('audio'), p=document.getElementById('player');
+  a.addEventListener('play',()=>p.classList.add('playing'));
+  a.addEventListener('pause',()=>p.classList.remove('playing'));
+  a.addEventListener('ended',()=>p.classList.remove('playing'));
+</script>
+</body>
+</html>
